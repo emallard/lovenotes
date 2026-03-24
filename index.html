@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoveNotes</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <header>
+        <h1>LoveNotes</h1>
+    </header>
+    <main>
+        <section id="notes-list">
+            <button id="add-note-btn">Add Note</button>
+            <div id="notes-container"></div>
+        </section>
+        <section id="add-note-form" style="display: none;">
+            <form id="note-form">
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+                <label for="place">Place:</label>
+                <input type="text" id="place" placeholder="Enter place" required>
+                <label for="content">Note:</label>
+                <textarea id="content" placeholder="Write your note here..." required></textarea>
+                <button type="submit">Save Note</button>
+                <button type="button" id="cancel-btn">Cancel</button>
+            </form>
+        </section>
+    </main>
+    <script src="js/idb.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
