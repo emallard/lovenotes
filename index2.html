@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-<meta name="viewport" content="width = 1050, user-scalable = no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script type="text/javascript" src="js/jquery.min.1.7.js"></script>
 <script type="text/javascript" src="js/turn.js"></script>
 </head>
@@ -9,15 +9,72 @@
 <div class="flipbook-viewport">
 	<div class="container">
 		<div class="flipbook">
-			<div style="background-image:url(1.jpg)"></div>
+            <!--
 			<div style="background-image:url(2.jpg)"></div>
 			<div style="background-image:url(3.jpg)"></div>
 			<div style="background-image:url(4.jpg)"></div>
 			<div style="background-image:url(5.jpg)"></div>
+            -->
 		</div>
 	</div>
 </div>
 
+<style>
+
+    body{ margin:0; }
+    /*
+    * { box-sizing: border-box; }
+    */
+
+    .page {
+        background: white;
+    }
+    .my-cover {
+        .title {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            background: #e7d3b3;
+            padding:10px;
+            border: solid 1px black;
+        }
+
+    }
+
+    .my-note {
+        /*background: white;
+        */
+        background: linear-gradient(to bottom,white 29px,#00b0d7 1px);
+        background-size: 100% 30px;
+
+        h1 {
+            background:white;
+            display:block;
+        }
+
+        .date
+        {
+            display:block;
+            border-width:0;
+            height:30px;
+            background:transparent;
+        }
+
+        textarea {
+            background:transparent;
+            border-width:0;
+            /*
+            position:absolute;
+            top: 30px; left:0; right:0; bottom:0;
+            display:block;
+            background: linear-gradient(to bottom,white 29px,#00b0d7 1px);
+            background-size: 100% 30px;
+            */
+        }
+    }
+</style>
 
 <script type="text/javascript">
 
@@ -28,11 +85,11 @@ function loadApp() {
 	$('.flipbook').turn({
 			// Width
 
-			width:922/2,
+			width:window.innerWidth,
 			
 			// Height
 
-			height:600,
+			height:window.innerHeight,
 
 			// Elevation
 
@@ -51,7 +108,72 @@ function loadApp() {
 	});
 }
 
+
+function populateCover()
+{
+    document.querySelector('.flipbook').innerHTML += `
+        <div class="my-cover" style="background-image:url(redcover.jpg)">
+            <div class="title">
+                Carnet de voyage<br>
+                Avril 2026<br>
+                <br>
+                - France<br>
+                - Suisse<br>
+                - Italie<br>
+            </div>
+        </div>
+    `
+}
+
+function populateForewords()
+{
+    document.querySelector('.flipbook').innerHTML += `
+    <div>
+        <h1>Forewords</h1>
+        We hope this book will record your best memories for this trip !
+        <br><br>
+        Ceri & Etienne
+    </div>
+    `
+}
+
+function populateNewPage() 
+{
+
+}
+
+
+function populate()
+{
+    for (let i=0; i<10; ++i)
+    {
+        document.querySelector('.flipbook').innerHTML += `
+        <div class="my-note">
+            <h1 contenteditable="true">Titre${i}</h1>
+            <input type="date" class="date">
+            <textarea>Blah</textarea>
+        </div>`;
+    }
+}
+
+populateCover();
+populateForewords();
+
+populate();
 loadApp();
+
+
+
+function exportPdf()
+{
+
+}
+
+function save()
+{
+
+}
+
 
 </script>
 
